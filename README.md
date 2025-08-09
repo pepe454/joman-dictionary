@@ -1,38 +1,18 @@
-# sv
+# Joman Sourashtra Language Dictionary
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Core Features
+- Database of sourashtra words and sentences with metadata like part of speech and category.
+- Translation from sourashtra to and from english. Ability to add additional language in the future.
+- Admin user can upload new words and sentences, as well as edit existing data. Bulk upload in file or csv text format also supported.
+- Website to view dictionary in categories.
+- Search database for sourashtra words or an english translation.
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Technology Stack
+- Database in postgresql with Drizzle ORM layer
+- Containerized in Docker, deployed on ubuntu
+- Sveltekit framework with node.js 
+- Languages: Typescript and SQL
+- Frontend: Tailwind, Skeleton.dev
+- Formatter: prettier 
+- Testing: vitest
