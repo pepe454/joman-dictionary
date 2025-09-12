@@ -1,0 +1,38 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    env_file: .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+      - ./src/db/scripts/:/docker-entrypoint-initdb.d # schema script 
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    restart: always
+    ports:
+      - 8080:8080
+      - 80:80
+    env_file: .env
+    depends_on:
+      - postgres
+    volumes:
+      - ./src/db/servers.json:/pgadmin4/servers.json
+      - ./src/db/preferences.json:/pgadmin4/preferences.json
+      - ./src/db/pgadmin:/var/lib/pgadmin
+ 
+  # adminer:
+  #   container_name: adminer
+  #   image: adminer:latest
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
+  #   depends_on:
+  #     - postgres
+
+volumes:
+  pgdata:
