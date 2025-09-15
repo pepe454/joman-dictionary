@@ -5,6 +5,9 @@ install:
 build:
 	npm run build
 
+dev:
+	npm run dev
+
 test:
 	npm run test
 
