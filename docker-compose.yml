@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:17
+    image: postgres:latest
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
@@ -8,15 +8,10 @@ services:
       retries: 5
       start_period: 30s
       timeout: 10s
+    env_file: .env
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
-      # - ./backend/db/scripts/:/docker-entrypoint-initdb.d # schema script
-    env_file:
-      - .env
-    environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD?Variable not set}
-      - POSTGRES_USER=${POSTGRES_USER?Variable not set}
-      - POSTGRES_DB=${POSTGRES_DB?Variable not set}
+    # - ./backend/db/scripts/:/docker-entrypoint-initdb.d # schema script
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -24,22 +19,25 @@ services:
     env_file: .env
     depends_on:
       - db
-    # volumes:
-    #   - ./src/db/servers.json:/pgadmin4/servers.json
-    #   - ./src/db/preferences.json:/pgadmin4/preferences.json
-    #   - ./src/db/pgadmin:/var/lib/pgadmin
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-public
-      - traefik.constraint-label=traefik-public
-      - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-http.rule=Host(`pgadmin.${DOMAIN?Variable not set}`)
-      - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-http.entrypoints=http
-      - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-http.middlewares=https-redirect
-      - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.rule=Host(`pgadmin.${DOMAIN?Variable not set}`)
-      - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.entrypoints=https
-      - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.tls=true
-      - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.tls.certresolver=le
-      - traefik.http.services.${STACK_NAME?Variable not set}-pgadmin.loadbalancer.server.port=8080
+    volumes:
+      # - ./backend/db/pgadmin/servers.json:/pgadmin4/servers.json
+      # - ./backend/db/pgadmin/preferences.json:/pgadmin4/preferences.json
+      # - ./backend/db/pgadmin/pgpass:/pgpass
+      - pgadmin-data:/var/lib/pgadmin
+
+    # traefik networking labels
+    # labels:
+    #   - traefik.enable=true
+    #   - traefik.docker.network=traefik-public
+    #   - traefik.constraint-label=traefik-public
+    #   - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-http.rule=Host(`pgadmin.${DOMAIN?Variable not set}`)
+    #   - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-http.entrypoints=http
+    #   - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-http.middlewares=https-redirect
+    #   - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.rule=Host(`pgadmin.${DOMAIN?Variable not set}`)
+    #   - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.entrypoints=https
+    #   - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.tls=true
+    #   - traefik.http.routers.${STACK_NAME?Variable not set}-pgadmin-https.tls.certresolver=le
+    #   - traefik.http.services.${STACK_NAME?Variable not set}-pgadmin.loadbalancer.server.port=8080
 
   # adminer:
   #   image: adminer
@@ -187,8 +185,8 @@ services:
 
 volumes:
   pgdata:
+  pgadmin-data:
 
 networks:
   traefik-public:
-    # Allow setting it to false for testing
     external: true

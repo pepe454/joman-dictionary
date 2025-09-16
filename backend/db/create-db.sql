@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS dictionary.word
     word_id serial NOT NULL,
     text text NOT NULL,
     language_id integer NOT NULL,
+    audio_file_path text,
     CONSTRAINT pk_word PRIMARY KEY (word_id)
 );
 
@@ -17,7 +18,7 @@ COMMENT ON TABLE dictionary.word
 CREATE TABLE IF NOT EXISTS dictionary.language
 (
     language_id serial NOT NULL,
-    language character varying(10) NOT NULL,
+    language text NOT NULL,
     CONSTRAINT pk_language PRIMARY KEY (language_id)
 );
 
@@ -26,6 +27,7 @@ CREATE TABLE IF NOT EXISTS dictionary.sentence
     sentence_id serial NOT NULL,
     text text NOT NULL,
     language_id integer,
+    audio_file_path text,
     PRIMARY KEY (sentence_id)
 );
 

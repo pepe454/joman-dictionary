@@ -4,14 +4,15 @@
 
 - [ ] Setup development Environment
   - [ ] Setup vscode to use python, ruff, and uv
-  - [ ] Install python
+  - [x] Install python
   - [ ] Setup uv package manager
-  - [ ] pyproject.toml
+  - [x] pyproject.toml
   - [ ] Install postgres server, spin it up using docker
-  - [ ] Install fastapi, sqlalchemy, and pydantic
+  - [x] Install fastapi, sqlalchemy, and pydantic using uv
 
 - [ ] Database Design
-  - [ ] Spin up postgres and pgadmin using docker, traefik, etc etc
+  - [x] Get the database docker container to run
+  - [x] Get PGAdmin to run
   - [ ] Design some of the database schema for core features:
     - [ ] words
     - [ ] sentences
