@@ -8,6 +8,13 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
+
+  // formatting
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.configPath": "./frontend/.prettierrc.json"
 }
