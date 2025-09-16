@@ -2,26 +2,26 @@
 
 ## Tasks
 
-- [ ] Setup development Environment
-  - [ ] Setup vscode to use python, ruff, and uv
+- [x] Setup development Environment
+  - [x] Setup vscode to use python, ruff, and uv
   - [x] Install python
-  - [ ] Setup uv package manager
+  - [x] Setup uv package manager
   - [x] pyproject.toml
-  - [ ] Install postgres server, spin it up using docker
+  - [x] Install postgres server, spin it up using docker
   - [x] Install fastapi, sqlalchemy, and pydantic using uv
 
 - [ ] Database Design
   - [x] Get the database docker container to run
   - [x] Get PGAdmin to run
-  - [ ] Design some of the database schema for core features:
-    - [ ] words
-    - [ ] sentences
-    - [ ] languages
-    - [ ] users
-    - [ ] audio files
-    - [ ] definitions
-    - [ ] categories
-    - [ ] Once you have the er diagram defined, generate the schema
+  - [x] Design some of the database schema for core features:
+    - [x] words
+    - [x] sentences
+    - [x] languages
+    - [x] users
+    - [x] audio files
+    - [x] definitions
+    - [x] categories
+    - [x] Once you have the er diagram defined, generate the schema
     - [ ] Setup alembic, sqlalchemy, and pydantic to work with the schema
 
 - [ ] API Design

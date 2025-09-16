@@ -1,5 +1,5 @@
 [project]
-name = "joman"
+name = "app"
 version = "0.1.0"
 description = "Sourashtra language dictionary backend"
 readme = "README.md"
@@ -7,6 +7,25 @@ requires-python = ">=3.13"
 dependencies = [
     "alembic>=1.16.5",
     "fastapi>=0.116.1",
+    "psycopg>=3.2.10",
     "pydantic>=2.11.9",
+    "pydantic-settings>=2.10.1",
+    "python-dotenv>=1.1.1",
+    "sqlacodegen>=3.0.0",
     "sqlalchemy>=2.0.43",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.tagets.wheel]
+packages = ["app"]
+
+[tool.ruff]
+exclude = [
+    ".venv",
+]
+line-length = 100
+indent-width = 4
+

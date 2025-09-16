@@ -2,6 +2,9 @@
 -- Please log an issue at https://github.com/pgadmin-org/pgadmin4/issues/new/choose if you find any bugs, including reproduction steps.
 BEGIN;
 
+-- give the auth to the admin role
+CREATE SCHEMA IF NOT EXISTS dictionary
+    AUTHORIZATION postgresadmin;
 
 CREATE TABLE IF NOT EXISTS dictionary.word
 (
