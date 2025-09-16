@@ -11,8 +11,13 @@ dependencies = [
     "pydantic>=2.11.9",
     "pydantic-settings>=2.10.1",
     "python-dotenv>=1.1.1",
-    "sqlacodegen>=3.0.0",
     "sqlalchemy>=2.0.43",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "sqlacodegen>=3.0.0",
 ]
 
 [build-system]
@@ -28,4 +33,3 @@ exclude = [
 ]
 line-length = 100
 indent-width = 4
-

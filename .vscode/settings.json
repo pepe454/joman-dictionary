@@ -19,5 +19,6 @@
   "prettier.configPath": "./frontend/.prettierrc.json",
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
-  }
+  },
+  "ruff.configuration": "./backend/pyproject.toml"
 }
