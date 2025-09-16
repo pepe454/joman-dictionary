@@ -16,5 +16,8 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.configPath": "./frontend/.prettierrc.json"
+  "prettier.configPath": "./frontend/.prettierrc.json",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
 }

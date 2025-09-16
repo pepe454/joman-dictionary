@@ -6,7 +6,7 @@
   "configurations": [
     {
       "name": "Debug FastAPI Project backend: Python Debugger",
-      "type": "debugpy",
+      "type": "python",
       "request": "launch",
       "module": "uvicorn",
       "args": ["app.main:app", "--reload"],

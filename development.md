@@ -24,7 +24,7 @@ Project stack heavily inspired by [Full Stack FastAPI Template](https://github.c
 
 - Ubuntu 24.04 on Linux or [wsl2 on windows running Ubuntu 24.04](https://learn.microsoft.com/en-us/windows/wsl/install)
 - [Install docker](https://docs.docker.com/get-started/get-docker/)
-- [Install python 3.13](https://docs.astral.sh/uv/guides/install-python/)
 - [Install node and npm](https://nodejs.org/en/download)
 - [Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+- [Install python 3.13 using uv](https://docs.astral.sh/uv/guides/install-python/)
 - Copy .env.example to .env, set environment variables manually, and save them in your password manager.
