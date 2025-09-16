@@ -1,0 +1,15 @@
+[project]
+name = "joman"
+version = "0.0.1"
+dependencies = [
+    "fastapi[standard]<1.0.0,>=0.114.2",
+    "pydantic>2.0",
+    "psycopg[binary]<4.0.0,>=3.1.13",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest<8.0.0,>=7.4.3",
+    "mypy<2.0.0,>=1.8.0",
+    "ruff<1.0.0,>=0.2.2",
+]

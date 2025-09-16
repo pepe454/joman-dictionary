@@ -19,8 +19,6 @@ Thumbs.db
 /cypress/screenshots/
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
 .idea
 *.suo
 *.ntvs*
@@ -41,3 +39,8 @@ src/db/servers.json
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+
+# Python shit
+venv/
+__pycach__/
