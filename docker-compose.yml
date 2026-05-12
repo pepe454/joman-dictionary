@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data/pgdata
+    # - ./backend/db/scripts/:/docker-entrypoint-initdb.d # schema script
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    env_file: .env
+    depends_on:
+      - db
+    volumes:
+      # - ./backend/db/pgadmin/servers.json:/pgadmin4/servers.json
+      # - ./backend/db/pgadmin/preferences.json:/pgadmin4/preferences.json
+      # - ./backend/db/pgadmin/pgpass:/pgpass
+      - pgadmin-data:/var/lib/pgadmin
+
+
+volumes:
+  pgdata:
+  pgadmin-data:
+  
