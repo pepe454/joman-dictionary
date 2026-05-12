@@ -17,7 +17,6 @@
 - Pluralized noun endings
 
 ### Frontend
-
 - Search database for an English word and find the corresponding sourashtra word(s) and contextual sentences. 
 - Clicking on a sourashtra word will display:
   - english translation
@@ -28,5 +27,15 @@
 - Sentences by Category, same categories as above.
 
 ## Note
+Because sourashtra script is not known by many native speakers, the Harvard Kyoto transliteration into roman characters 
+will allow everyone to read sourashtra words. However, the sourashtra lipi can eventually be supported and stored for those who can read it.
 
-- Because sourashtra script is not known by many native speakers, the Harvard Kyoto transliteration into roman characters will allow everyone to read sourashtra words. However, the sourashtra lipi will be supported and stored for those who can read it.
+
+## Tech Stack 
+- Backend: _Golang_
+- Database: _Postgres_
+- Frontend: _Vue.js_
+- Containers: _Docker_
+- Hosting: _AWS_
+- CI/CD: _GitHub Actions_
+- Reverse Proxy: _Traefik_
