@@ -6,6 +6,13 @@
 
 ## Core Features
 
+### Words and Sentences
+
+- Word files will be stored raw in .csv files in the words/ directory for easy reading and writing. 
+  For multiple-meaning words, the .csv file can have multiple rows for the same word.
+- Sentences will similarly be stored in .csv files in the sentences/ directory.
+
+
 ### Dictionary and Translations
 
 - Database of sourashtra words and sentences with metadata including part of speech and category.

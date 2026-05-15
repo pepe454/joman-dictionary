@@ -1,0 +1,37 @@
+sourashtra_word,english_word,optional_context
+ambO,mother,,
+bo,father,,
+ba,father,,
+dadO,brother,older brother
+bEy,sister,older sister
+mai,sister,younger sister
+babu,brother,younger brother
+ammO,grandmother,father's mother 
+ayyO,grandfather,father's father
+mhOtta ba,uncle,father's older brother
+mhOttam ba,aunt,father's older brother's wife
+nhunna ba,uncle,father's younger brother
+nhunnam ba,aunt,father's older brother's wife
+bEy,aunt,father's sister
+bhavO,uncle,father's sister's husband
+anGher bo,grandfather,mother's mother
+anGher ambO,grandmother,mother's mother
+mamO,uncle,mother's brother
+mamO,father-in-law,colloquial term for father-in-law
+mami,aunt,mother's brother's wife
+mami,mother-in-law,colloquial term for mother-in-law
+mousi,aunt,mother's sister
+mousa,uncle,mother's sister's husband
+dallO,husband,,
+bEyl,wife,,
+pillO,child,,
+bedO,son,,
+bedI,daughter,,
+nattE,grandson,,
+nadini,granddaughter,,
+sasu,mother-in-law,,
+sOsurO,father-in-law,,
+salO,brother-in-law,wife's brother
+jomAi,son-in-law,,
+bhOndi,dauther-in-law,,
+kudambam,family,,

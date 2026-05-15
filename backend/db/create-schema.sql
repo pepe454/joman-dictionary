@@ -59,14 +59,6 @@ CREATE TABLE IF NOT EXISTS dictionary.word_category
     PRIMARY KEY (word_id, category_id)
 );
 
-CREATE TABLE IF NOT EXISTS dictionary.definition
-(
-    definition_id serial NOT NULL,
-    word_id integer NOT NULL,
-    text text NOT NULL,
-    PRIMARY KEY (definition_id)
-);
-
 CREATE TABLE IF NOT EXISTS dictionary.translation
 (
     sourashtra_word_id integer NOT NULL,
@@ -129,15 +121,6 @@ ALTER TABLE IF EXISTS dictionary.word_category
     ON DELETE RESTRICT;
 CREATE INDEX IF NOT EXISTS fki_fk_category_id_to_word
     ON dictionary.word_category(category_id);
-
-
-ALTER TABLE IF EXISTS dictionary.definition
-    ADD CONSTRAINT fk_word_in_dictionary FOREIGN KEY (word_id)
-    REFERENCES dictionary.word (word_id) MATCH SIMPLE
-    ON UPDATE CASCADE
-    ON DELETE CASCADE;
-CREATE INDEX IF NOT EXISTS fki_fk_word_in_dictionary
-    ON dictionary.definition(word_id);
 
 
 ALTER TABLE IF EXISTS dictionary.translation
