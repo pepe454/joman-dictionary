@@ -6,7 +6,7 @@ dhamattE,run
 hinGgatte,climb
 hibbattE,stand
 injattE,sleep
-fhuDattE,wake
+huDattE,wake
 bisattE,sit
 dowdattE,drive
 hibbattE,stand
@@ -50,3 +50,6 @@ anattE,bring
 uuskattE,bark
 uchattE,pull
 dhobattE,push
+kerattE,do
+podattE,fall
+sattE,see

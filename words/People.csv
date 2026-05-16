@@ -6,8 +6,8 @@ bEyl menik,woman,
 ammakkO,woman,
 ghevrAr,pregnancy,
 ghevrArin,pregnant woman,
-dovro,old man,potentially derrogatory
-dovri,old woman,potentially derrogatory
+dovro,old man,
+dovri,old woman,
 vorsu,age,
 vorsu hoyaTenu,elderly,
 mhoTTan,elderly,elderly people
@@ -15,3 +15,4 @@ nhuru,baby,
 beDki,girl,
 beDko,boy,
 keran,person,
+choDDo,thief,
