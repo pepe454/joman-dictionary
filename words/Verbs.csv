@@ -6,7 +6,7 @@ dhamattE,run
 hinGgatte,climb
 hibbattE,stand
 injattE,sleep
-huDattE,wake
+fhuDattE,wake
 bisattE,sit
 hibbattE,stand
 khaattE,eat
@@ -21,3 +21,5 @@ sangattE,say
 menattE,speak
 menattE,speak
 lavattE,feel
+luchattE,spill
+bijjattE,soak

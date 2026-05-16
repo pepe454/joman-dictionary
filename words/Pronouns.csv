@@ -1,10 +1,23 @@
 sourashtra_word,english_word,optional_context
 mi,I,used in action verbs such as going or playing
-mogO,me,pronoun me as well as I for reflexive verbs such as feeling
-tu,you,informal-you used for people younger than yourself 
-tuMi,you,formal-you used to show respect especially towards elders
+tu,you,informal you
+tuMi,you,formal you used to show respect especially towards elders
+tuMi,you all,plural form of you
 thenO,he,informal he
 thenU,he,formal he
 thenO,she,informal
-thenU,she,formal
+thenu,she,formal
 aMi,we,
+askitheno,they,
+askithenu,everyone,
+konnithenu,nobody,
+mogo,me,pronoun for "me"; and for reflexive verbs such as feeling
+thogO,you,informal direct object pronoun for "you" goes with "tu"
+thuNGkO,you,formal direct object pronoun "you" goes with "tuMi"
+thuNGkO,you all,you plural
+thegO,him,informal him
+thegO,her,informal her
+theNGkO,him,formal him goes with "thenu"
+theNGkO,her,formal her goes with "thenu"
+askiTheNGkO,everyone,to everyone
+koNGko,whose,

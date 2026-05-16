@@ -1,0 +1,5 @@
+sourashtra_sentence:
+Mi bharad challi hodeyo. Povus aveyyo. More doskO oLLo fhoyO. Ghomo avi mi doskO sukeyyo nhi. Mogo aangu fhunno hodeyo.
+
+english_sentence:
+I was walking outside. It started to rain and my head got wet. When I got home, I didn't dry my head, so I came down with a fever.

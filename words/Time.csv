@@ -1,13 +1,17 @@
 sourashtra_word,english_word,optional_context
+aTTo,now
+solja,later
 hiNdO,today,
 soNdO,tomorrow,
 kAL,yesterday,
 solabar,morning,
-dISullO,daytime,
+disullO,daytime,
+dhuvari,afternoon
 viLLtO,evening,
 radhi,night,
 ghEDi,moment,
-gHenTa,time,
+ghentO,time,
+ghentO hoyiriyO,late,
 dinu,day,
 vaar,week,
 mhAdo,month,
@@ -15,10 +19,13 @@ vorsu,year,
 vaaru-vaaruk,weekly,on a week-to-week basis
 vaal,time,a time when something happened
 khobbIM,always,
+nichu,daily,also used for always
 somaar,monday,
 mongalaar,tuesday,
 budaar,wednesday,
 bestaar,thursday,
 shukraar,friday,
-senmaar,saturday
-aitaar,sunday
+senmaar,saturday,
+aitaar,sunday,
+kalaam,season,
+kalaam,era,
