@@ -1,7 +1,7 @@
 sourashtra_word,english_word,optional_context
 aTTo,now
 solja,later
-hiNdO,today,
+hindO,today,
 soNdO,tomorrow,
 kAL,yesterday,
 solabar,morning,
@@ -9,6 +9,7 @@ disullO,daytime,
 dhuvari,afternoon
 viLLtO,evening,
 radhi,night,
+villuku,all-day
 ghEDi,moment,
 ghentO,time,
 ghentO hoyiriyO,late,
