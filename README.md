@@ -1,9 +1,5 @@
 # Joman Sourashtra Language Dictionary
 
-## Screenshots Here
-
-...
-
 ## Core Features
 
 ### Words and Sentences
@@ -46,3 +42,12 @@ will allow everyone to read sourashtra words. However, the sourashtra lipi can e
 - Hosting: _AWS_
 - CI/CD: _GitHub Actions_
 - Reverse Proxy: _Traefik_
+
+
+## Sourashtra Resources
+TODO: Add a page for this compilation.
+- [Thinnal.org - Community Forum](https://thinnal.org/)
+- [Palkar.org - Community and Culture](http://palkar.org/)
+- [Sourashtra Association](https://sourashtraassociation.org/)
+- [Sourashtra Dictionary](https://dictionary.thinnal.org/)
+- [Sourashtra Dictionary 2](http://sourashtradictionary.com/)
