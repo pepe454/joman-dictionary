@@ -1,3 +1,17 @@
-# Requires postgresql client , found here - https://www.postgresql.org/download/linux/ubuntu/ 
+# Download psql client here - https://www.postgresql.org/download/linux/ubuntu/ 
 psql-connect:
 	psql -h localhost -p 5432 -U postgresadmin -d joman
+
+init-db:
+	docker compose up -d postgres && docker compose logs -f postgres
+
+delete-db:
+	docker compose down postgres && docker volume prune --all
+
+install-go:
+	cd $$HOME && \
+	curl -LO https://go.dev/dl/go1.26.3.linux-amd64.tar.gz && \
+	sudo rm -rf /usr/local/go && \
+	sudo tar -C /usr/local -xzf go1.26.3.linux-amd64.tar.gz && \
+	export PATH=$$PATH:/usr/local/go/bin && \
+	go version

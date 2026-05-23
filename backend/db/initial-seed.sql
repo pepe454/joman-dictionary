@@ -22,10 +22,10 @@ INSERT INTO dictionary.part_of_speech (part_of_speech) VALUES
     ('interrogative');
 
 
-INSERT INTO dictionary.word (word_text, language_id, part_of_speech, word_text_alt) VALUES
-    ('ambO', 1, 'noun', 'ꢂꢪ꣄ꢨꣁ'),
-    ('mother', 2, 'noun', NULL),
-    ('அம்மா', 3, 'noun', 'amma');
+INSERT INTO dictionary.word (word_text, language, part_of_speech, word_text_alt) VALUES
+    ('ambO', 'Sourashtra', 'noun', 'ꢂꢪ꣄ꢨꣁ'),
+    ('mother', 'English', 'noun', NULL),
+    ('அம்மா', 'தமிழ்', 'noun', 'amma');
 
 
 INSERT INTO dictionary.translation (sourashtra_word_id, other_word_id, context) VALUES

@@ -3,13 +3,13 @@ BEGIN;
 
 CREATE SCHEMA IF NOT EXISTS dictionary;
 
+ALTER DATABASE joman SET search_path = dictionary, public;
 
 CREATE TABLE IF NOT EXISTS dictionary.language
 (
-    language_id serial NOT NULL,
     language VARCHAR(16) NOT NULL,
     language_alt VARCHAR(16) NULL,
-    CONSTRAINT pk_language PRIMARY KEY (language_id)
+    CONSTRAINT pk_language PRIMARY KEY (language)
 );
 
 
@@ -24,12 +24,12 @@ CREATE TABLE IF NOT EXISTS dictionary.word
 (
     word_id serial NOT NULL,
     word_text text NOT NULL,
-    language_id integer NOT NULL,
+    language VARCHAR(16) NOT NULL,
     part_of_speech VARCHAR(16) NOT NULL,
     word_text_alt text NULL,
     audio_file_path text,
     CONSTRAINT pk_word PRIMARY KEY (word_id),
-    CONSTRAINT word_text_distinct UNIQUE (word_text)
+    CONSTRAINT word_text_distinct UNIQUE (word_text, language)
 );
 
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS dictionary.sentence
 (
     sentence_id serial NOT NULL,
     text text NOT NULL,
-    language_id integer NOT NULL,
+    language VARCHAR(16) NOT NULL,
     audio_file_path text,
     PRIMARY KEY (sentence_id)
 );
@@ -87,12 +87,12 @@ CREATE TABLE IF NOT EXISTS dictionary.word_category
 /* The following are FK Constraints between tables. */
 
 ALTER TABLE IF EXISTS dictionary.word
-    ADD CONSTRAINT fk_word_language FOREIGN KEY (language_id)
-    REFERENCES dictionary.language (language_id) MATCH SIMPLE
+    ADD CONSTRAINT fk_word_language FOREIGN KEY (language)
+    REFERENCES dictionary.language (language) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE RESTRICT;
 CREATE INDEX IF NOT EXISTS fki_fk_word_language
-    ON dictionary.word(language_id);
+    ON dictionary.word(language);
 
 
 ALTER TABLE IF EXISTS dictionary.word
@@ -123,12 +123,12 @@ CREATE INDEX IF NOT EXISTS fki_fk_other_word_id
 
 
 ALTER TABLE IF EXISTS dictionary.sentence
-    ADD CONSTRAINT fk_sentence_language FOREIGN KEY (language_id)
-    REFERENCES dictionary.language (language_id) MATCH SIMPLE
+    ADD CONSTRAINT fk_sentence_language FOREIGN KEY (language)
+    REFERENCES dictionary.language (language) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 CREATE INDEX IF NOT EXISTS fki_fk_sentence_language
-    ON dictionary.sentence(language_id);
+    ON dictionary.sentence(language);
 
 
 ALTER TABLE IF EXISTS dictionary.word_in_context
