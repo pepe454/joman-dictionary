@@ -34,7 +34,9 @@ Because sourashtra script is not known by many native speakers, the Harvard Kyot
 will allow everyone to read sourashtra words. However, the sourashtra lipi can eventually be supported and stored for those who can read it.
 
 
-## Tech Stack 
+## Tech Stack (Developer Docs)
+- OS: _Linux_
+- Arch: _Ubuntu 24.04_
 - Backend: _Golang_
 - Database: _Postgres_
 - Frontend: _Vue.js_
@@ -49,5 +51,6 @@ TODO: Add a page for this compilation.
 - [Thinnal.org - Community Forum](https://thinnal.org/)
 - [Palkar.org - Community and Culture](http://palkar.org/)
 - [Sourashtra Association](https://sourashtraassociation.org/)
+- [Sourashtra Association Literary Works](https://sourashtraassociation.org/poltam-homepage/poltam-literary-works/)
 - [Sourashtra Dictionary](https://dictionary.thinnal.org/)
 - [Sourashtra Dictionary 2](http://sourashtradictionary.com/)

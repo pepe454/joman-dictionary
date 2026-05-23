@@ -1,6 +1,9 @@
+name: joman
+
 services:
   postgres:
     image: postgres:18.3-alpine3.22
+    container_name: postgres
     restart: always
     shm_size: 128mb
     healthcheck:
@@ -14,10 +17,11 @@ services:
     env_file: .env
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
-    # - ./backend/db/scripts/:/docker-entrypoint-initdb.d # schema script
+      - ./backend/db/:/docker-entrypoint-initdb.d/ # init scripts
 
   pgadmin:
     image: dpage/pgadmin4:2026-03-03-1
+    container_name: pgadmin
     restart: always
     env_file: .env
     depends_on:
