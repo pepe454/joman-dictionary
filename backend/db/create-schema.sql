@@ -1,10 +1,16 @@
 BEGIN;
 
-
+-- Use non-public schema as default.
 CREATE SCHEMA IF NOT EXISTS dictionary;
 
+-- This allows for fuzzy search using the '%' operator
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+-- Set joman schema by default.
 ALTER DATABASE joman SET search_path = dictionary, public;
 
+
+-- Restrict languages
 CREATE TABLE IF NOT EXISTS dictionary.language
 (
     language VARCHAR(16) NOT NULL,
@@ -13,6 +19,7 @@ CREATE TABLE IF NOT EXISTS dictionary.language
 );
 
 
+-- Restrict parts of speech
 CREATE TABLE IF NOT EXISTS dictionary.part_of_speech 
 (
     part_of_speech VARCHAR(16) NOT NULL,
@@ -45,7 +52,7 @@ CREATE TABLE IF NOT EXISTS dictionary.translation
 CREATE TABLE IF NOT EXISTS dictionary.sentence
 (
     sentence_id serial NOT NULL,
-    text text NOT NULL,
+    sentence_text text NOT NULL,
     language VARCHAR(16) NOT NULL,
     audio_file_path text,
     PRIMARY KEY (sentence_id)

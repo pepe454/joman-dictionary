@@ -17,6 +17,7 @@ func TestConnect(t *testing.T) {
 		t.Fatalf("Ping() after connect error: %v", err)
 	}
 
+	// There should be 3 languages in the dictionary.language table as per the test data setup.
 	rows, err := pool.Query(ctx, "SELECT language, language_alt FROM dictionary.language")
 	if err != nil {
 		t.Fatalf("Query languages error: %v", err)
