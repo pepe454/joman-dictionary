@@ -25,3 +25,6 @@ install-go:
 source-env:
 	set -o allexport && source .env && set +o allexport
 
+
+sqlc-generate:
+	cd backend && sqlc generate
