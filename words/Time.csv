@@ -10,18 +10,19 @@ dhuvari,afternoon
 viLLtO,evening,
 radhi,night,
 villuku,all-day
-ghEDi,moment,
-ghentO,time,
+ghEDi,moment,indicates a duration of time
+ghentO,time,indicates the time of the day
 ghentO hoyiriyO,late,
 dinu,day,
 vorsu,year,
-gEy vorsu,last year
+gEyvorsu,last year
 vaar,week,
 vaaru-vaaruk,weekly,on a week-to-week basis
-gEy vaar,last week
+gEyvaar,last week
 vaal,time,a time when something happened
 mhaDho,month,
 khobbIM,always,
+khobbadi,whenever
 nichu,daily,also used for always
 somaar,monday,
 mongalaar,tuesday,
@@ -32,3 +33,8 @@ senmaar,saturday,
 aitaar,sunday,
 kalaam,season,
 kalaam,era,
+sennam,early,
+churUM,early,
+harmbam,beginning,
+harmbam,start,
+mundadi,long ago,

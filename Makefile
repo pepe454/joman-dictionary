@@ -28,3 +28,6 @@ source-env:
 
 sqlc-generate:
 	cd backend && sqlc generate
+
+tidy:
+	cd backend && go mod tidy
