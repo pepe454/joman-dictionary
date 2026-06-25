@@ -1,40 +1,30 @@
-sourashtra_word,english_word,optional_context
-aTTo,now
-solja,later
-hindO,today,
-soNdO,tomorrow,
-kAL,yesterday,
-solabar,morning,
-disullO,daytime,
+sourashtra_word,english_word
+hindO,today
+soNdO,tomorrow
+kAL,yesterday
+solabar,morning
+disullO,daytime
 dhuvari,afternoon
-viLLtO,evening,
-radhi,night,
-villuku,all-day
-ghEDi,moment,indicates a duration of time
-ghentO,time,indicates the time of the day
-ghentO hoyiriyO,late,
-dinu,day,
-vorsu,year,
+viLLtO,evening
+radhi,night
+ghEDi,moment
+ghentO,time
+dinu,day
+vorsu,year
+vaar,week
 gEyvorsu,last year
-vaar,week,
-vaaru-vaaruk,weekly,on a week-to-week basis
 gEyvaar,last week
-vaal,time,a time when something happened
-mhaDho,month,
-khobbIM,always,
-khobbadi,whenever
-nichu,daily,also used for always
-somaar,monday,
-mongalaar,tuesday,
-budaar,wednesday,
-bestaar,thursday,
-shukraar,friday,
-senmaar,saturday,
-aitaar,sunday,
-kalaam,season,
-kalaam,era,
-sennam,early,
-churUM,early,
-harmbam,beginning,
-harmbam,start,
-mundadi,long ago,
+vaal,time
+mhaDho,month
+somaar,monday
+mongalaar,tuesday
+budaar,wednesday
+bestaar,thursday
+shukraar,friday
+senmaar,saturday
+aitaar,sunday
+kalaam,season
+harmbam,beginning
+harmbam,start
+mundadi,long ago
+villuku,all-day

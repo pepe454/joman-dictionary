@@ -128,3 +128,19 @@ from dictionary.word
 where language = $1
 and   (word_text % $2 or word_text_alt % $2) 
 order by score desc;
+
+-- name: InsertWord :one
+insert into dictionary.word (word_text, language, part_of_speech, word_text_alt)
+values ($1, $2, $3, $4)
+returning word_id;
+
+
+-- name: InsertTranslation :exec
+insert into dictionary.translation (sourashtra_word_id, other_word_id, context)
+values ($1, $2, $3);
+
+
+-- name: InsertWordCategory :exec
+insert into dictionary.word_category (word_id, category_id)
+values ($1, $2);
+

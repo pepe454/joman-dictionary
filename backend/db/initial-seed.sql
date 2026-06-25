@@ -35,6 +35,15 @@ INSERT INTO dictionary.translation (sourashtra_word_id, other_word_id, context) 
 
 INSERT INTO dictionary.category (category) VALUES
     ('family'), -- always put family first!
+    -- these are all parts of speech
+    ('adjectives'),
+    ('adverbs'),
+    ('pronouns'),
+    ('verbs'),
+    ('questions'),
+    ('numbers'),
+    ('conjunctions'),
+    ('prepositions'),
     ('animals'),
     ('body'),
     ('clothing'),
@@ -44,10 +53,8 @@ INSERT INTO dictionary.category (category) VALUES
     ('food'),
     ('house'),
     ('nature'),
-    ('numbers'),
     ('people'),
     ('places'),
-    ('questions'),
     ('taste'),
     ('time');
 

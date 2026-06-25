@@ -15,8 +15,7 @@ var (
 	poolOnce sync.Once
 )
 
-// Connect initializes the singleton pool on first call and returns it.
-// Subsequent calls return the existing pool without reconnecting.
+// Connect initializes the singleton pool on first call and returns it, then returns the singleton afterwards.
 func Connect(ctx context.Context) (*pgxpool.Pool, error) {
 	var connErr error
 	poolOnce.Do(func() {

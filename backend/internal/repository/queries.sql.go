@@ -54,6 +54,62 @@ func (q *Queries) CategoriesForWord(ctx context.Context, wordID int32) ([]Catego
 	return items, nil
 }
 
+const insertTranslation = `-- name: InsertTranslation :exec
+insert into dictionary.translation (sourashtra_word_id, other_word_id, context)
+values ($1, $2, $3)
+`
+
+type InsertTranslationParams struct {
+	SourashtraWordID int32
+	OtherWordID      int32
+	Context          pgtype.Text
+}
+
+func (q *Queries) InsertTranslation(ctx context.Context, arg InsertTranslationParams) error {
+	_, err := q.db.Exec(ctx, insertTranslation, arg.SourashtraWordID, arg.OtherWordID, arg.Context)
+	return err
+}
+
+const insertWord = `-- name: InsertWord :one
+insert into dictionary.word (word_text, language, part_of_speech, word_text_alt)
+values ($1, $2, $3, $4)
+returning word_id
+`
+
+type InsertWordParams struct {
+	WordText     string
+	Language     string
+	PartOfSpeech string
+	WordTextAlt  pgtype.Text
+}
+
+func (q *Queries) InsertWord(ctx context.Context, arg InsertWordParams) (int32, error) {
+	row := q.db.QueryRow(ctx, insertWord,
+		arg.WordText,
+		arg.Language,
+		arg.PartOfSpeech,
+		arg.WordTextAlt,
+	)
+	var word_id int32
+	err := row.Scan(&word_id)
+	return word_id, err
+}
+
+const insertWordCategory = `-- name: InsertWordCategory :exec
+insert into dictionary.word_category (word_id, category_id)
+values ($1, $2)
+`
+
+type InsertWordCategoryParams struct {
+	WordID     int32
+	CategoryID int32
+}
+
+func (q *Queries) InsertWordCategory(ctx context.Context, arg InsertWordCategoryParams) error {
+	_, err := q.db.Exec(ctx, insertWordCategory, arg.WordID, arg.CategoryID)
+	return err
+}
+
 const listCategories = `-- name: ListCategories :many
 select category_id, 
        category
