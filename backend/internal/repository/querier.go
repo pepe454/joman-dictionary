@@ -10,6 +10,9 @@ import (
 
 type Querier interface {
 	CategoriesForWord(ctx context.Context, wordID int32) ([]CategoriesForWordRow, error)
+	GetTranslation(ctx context.Context, arg GetTranslationParams) (DictionaryTranslation, error)
+	GetWordCategory(ctx context.Context, arg GetWordCategoryParams) (DictionaryWordCategory, error)
+	GetWordID(ctx context.Context, arg GetWordIDParams) (int32, error)
 	InsertTranslation(ctx context.Context, arg InsertTranslationParams) error
 	InsertWord(ctx context.Context, arg InsertWordParams) (int32, error)
 	InsertWordCategory(ctx context.Context, arg InsertWordCategoryParams) error

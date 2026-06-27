@@ -129,15 +129,36 @@ where language = $1
 and   (word_text % $2 or word_text_alt % $2) 
 order by score desc;
 
+-- name: GetWordID :one
+select word_id
+from dictionary.word
+where word_text = $1
+and   language = $2;
+
+
 -- name: InsertWord :one
 insert into dictionary.word (word_text, language, part_of_speech, word_text_alt)
 values ($1, $2, $3, $4)
 returning word_id;
 
 
+-- name: GetTranslation :one
+select sourashtra_word_id, other_word_id, context
+from dictionary.translation
+where sourashtra_word_id = $1
+and   other_word_id = $2;
+
+
 -- name: InsertTranslation :exec
 insert into dictionary.translation (sourashtra_word_id, other_word_id, context)
 values ($1, $2, $3);
+
+
+-- name: GetWordCategory :one
+select word_id, category_id
+from dictionary.word_category
+where word_id = $1
+and   category_id = $2;
 
 
 -- name: InsertWordCategory :exec

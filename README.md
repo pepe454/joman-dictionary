@@ -54,6 +54,7 @@ TODO: Add a page for this compilation.
 - [Sourashtra Association Literary Works](https://sourashtraassociation.org/poltam-homepage/poltam-literary-works/)
 - [Sourashtra Dictionary](https://dictionary.thinnal.org/)
 - [Sourashtra Dictionary 2](http://sourashtradictionary.com/)
-- [Noto Sans Saurashtra Font](https://www.google.com/get/noto/)
+- [Noto Sans Saurashtra Font](https://fonts.google.com/noto/specimen/Noto+Sans+Saurashtra?preview.script=Saur&preview.lang=saz_Saur)
+- [Sourashtra Font](https://www.omniglot.com/writing/saurashtra.htm)
 - [OS Subramanian Blog](https://subramanian-obula.blogspot.com/)
 - [Sourashtra Article](https://www.endangeredalphabets.net/alphabets/sourashtra/)

@@ -54,6 +54,63 @@ func (q *Queries) CategoriesForWord(ctx context.Context, wordID int32) ([]Catego
 	return items, nil
 }
 
+const getTranslation = `-- name: GetTranslation :one
+select sourashtra_word_id, other_word_id, context
+from dictionary.translation
+where sourashtra_word_id = $1
+and   other_word_id = $2
+`
+
+type GetTranslationParams struct {
+	SourashtraWordID int32
+	OtherWordID      int32
+}
+
+func (q *Queries) GetTranslation(ctx context.Context, arg GetTranslationParams) (DictionaryTranslation, error) {
+	row := q.db.QueryRow(ctx, getTranslation, arg.SourashtraWordID, arg.OtherWordID)
+	var i DictionaryTranslation
+	err := row.Scan(&i.SourashtraWordID, &i.OtherWordID, &i.Context)
+	return i, err
+}
+
+const getWordCategory = `-- name: GetWordCategory :one
+select word_id, category_id
+from dictionary.word_category
+where word_id = $1
+and   category_id = $2
+`
+
+type GetWordCategoryParams struct {
+	WordID     int32
+	CategoryID int32
+}
+
+func (q *Queries) GetWordCategory(ctx context.Context, arg GetWordCategoryParams) (DictionaryWordCategory, error) {
+	row := q.db.QueryRow(ctx, getWordCategory, arg.WordID, arg.CategoryID)
+	var i DictionaryWordCategory
+	err := row.Scan(&i.WordID, &i.CategoryID)
+	return i, err
+}
+
+const getWordID = `-- name: GetWordID :one
+select word_id
+from dictionary.word
+where word_text = $1
+and   language = $2
+`
+
+type GetWordIDParams struct {
+	WordText string
+	Language string
+}
+
+func (q *Queries) GetWordID(ctx context.Context, arg GetWordIDParams) (int32, error) {
+	row := q.db.QueryRow(ctx, getWordID, arg.WordText, arg.Language)
+	var word_id int32
+	err := row.Scan(&word_id)
+	return word_id, err
+}
+
 const insertTranslation = `-- name: InsertTranslation :exec
 insert into dictionary.translation (sourashtra_word_id, other_word_id, context)
 values ($1, $2, $3)

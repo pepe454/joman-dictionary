@@ -1,30 +1,27 @@
-sourashtra_word,english_word,optional_context
-choKKaD,good,
-santosh,happy,
-sompu,happy,sompu keraras
-dhaak,afraid,mogo dhaakaras
-vichaar,sad,
-raak,anger,
-rOD,cry,
-praamo,love,
-prev,love,
-sUt,craving,
-pod jaaL,jealous,literally meaning 'belly fire'
-sIn,tired,mogo sinaras
-haGUr,greedy,
-himcho,annoyed,mogo himcho kereras
-rosaras,hate,
-dhannu,gratitude,
-bhook,hunger,mogo bhook kereras
-sOk,thirst,mogo sOk kereras
-dukku,sorrow,suffering
-duno,pain,noun for pain as in maan duno
-gheru,proud,
-astha,desire,
-sooth,craving,
-pajay,want,mogo bhaad pajay
-nukko,dislike,
-avssar,hurry,in a hurry as in avsa avssar
-sulla,cold,mogo sulla lavaras
-hunno,hot,mogo hunno lavaras
-kingkIR,disgust,kingkIR podaras
+sourashtra_word,english_word,optional_context,part_of_speech
+chokkad,good,chokkad sE,adjective
+sontOsh,happy,,adjective
+sompu,happiness,sompu keraras,noun
+dhaak,afraid,mogo dhaakaras,noun
+vichaar,sad,mogo vichaar lavaras,adjective
+raak,anger,raak podnukko,noun
+rODattE,cry,,verb
+praamo,love,,noun
+prEv,love,thogO hoLLo prev sEtE,noun
+sooth,craving,,noun
+sIn,tiredness,mogo sIn gan sE,noun
+haGUr,greedy,,adjective
+himcho,annoyed,mogo himcho kereras,noun
+dhannu,gratitude,jukku dhannu,noun
+bhook,hunger,mogo bhook kereras,noun
+sOk,thirst,mogo sOk kereras,noun
+dukku,sorrow,suffering,noun
+duno,pain,gudgu duno as in knee pain,noun
+geruv,arrogance,,noun
+astha,desire,,noun
+paje,want,mogo bhaad paje,noun
+nukko,dislike,,noun
+avssar,hurry,in a hurry as in avsa avssar,noun
+sulla,cold,mogo sulla lavaras,adjective
+hunno,hot,mogo hunno lavaras,adjective
+kingkIR,disgust,kingkIR podaras,noun

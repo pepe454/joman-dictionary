@@ -2,6 +2,7 @@ sourashtra_word,english_word
 avattE,come
 jaattE,go
 chalattE,walk
+chalattE,happen
 dhamattE,run
 hinGgatte,climb
 hibbattE,stand
@@ -88,6 +89,7 @@ musaDatte,finish
 jiivattE,live
 sikkattE,learn
 sikkadattE,teach
+buddhi sangattE,teach
 aikkattE,hear
 dhettE,give
 gunjattE,launder
@@ -102,3 +104,5 @@ havdulaattE,think
 havdulaattE,remember
 prunjaattE,understand
 mellattE,think
+unno kerattE,reduce
+magattE,demand

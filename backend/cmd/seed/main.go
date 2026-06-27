@@ -9,74 +9,83 @@ import (
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgtype"
-	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/pepe454/joman-dictionary/internal/csv"
 	"github.com/pepe454/joman-dictionary/internal/db"
 	"github.com/pepe454/joman-dictionary/internal/repository"
 )
 
 type CSVFile struct {
-	filepath     string
-	partOfSpeech string
-	categoryID   int
+	FilePath            string
+	DefaultPartOfSpeech string
+	CategoryID          int
+}
+
+func getOrInsertWord(ctx context.Context, q *repository.Queries, params repository.InsertWordParams) (int32, error) {
+	id, err := q.GetWordID(ctx, repository.GetWordIDParams{
+		WordText: params.WordText,
+		Language: params.Language,
+	})
+	if err == nil {
+		return id, nil
+	}
+	return q.InsertWord(ctx, params)
 }
 
 // uploadWordPair takes a pair of sourashtra word + english word and uploads them to the Database
-// It also uploads the translation between them, and the category as well.
-func uploadWordPair(ctx context.Context, pool *pgxpool.Pool, q *repository.Queries, sourashtraText, englishText, partOfSpeech, translationContext string, categoryID int) error {
-	// Step 1 : Setup a transaction
-	tx, err := pool.Begin(ctx)
-	if err != nil {
-		log.Panic("Failed to begin transaction: ", err)
-	}
-	defer tx.Rollback(ctx)
-	qtx := q.WithTx(tx)
-
-	// Step 2: Insert Sourashtra Word
-	sourashtraWordParams := repository.InsertWordParams{
-		WordText:     sourashtraText,
+func uploadWordPair(ctx context.Context, q *repository.Queries, wordRecord csv.WordRecord, categoryID int) error {
+	// Step 1: Get or insert Sourashtra word
+	sourashtraID, err := getOrInsertWord(ctx, q, repository.InsertWordParams{
+		WordText:     wordRecord.SourashtraWord,
 		Language:     "Sourashtra",
-		PartOfSpeech: partOfSpeech,
-	}
-	sourashtraID, err := qtx.InsertWord(ctx, sourashtraWordParams)
+		PartOfSpeech: wordRecord.PartOfSpeech,
+	})
 	if err != nil {
 		return err
 	}
 
-	// Step 3: Insert English Word
-	englishWordParams := repository.InsertWordParams{
-		WordText:     englishText,
+	// Step 2: Get or insert English word
+	englishID, err := getOrInsertWord(ctx, q, repository.InsertWordParams{
+		WordText:     wordRecord.EnglishWord,
 		Language:     "English",
-		PartOfSpeech: partOfSpeech,
-	}
-	englishID, err := qtx.InsertWord(ctx, englishWordParams)
+		PartOfSpeech: wordRecord.PartOfSpeech,
+	})
 	if err != nil {
 		return err
 	}
 
-	// Step 4: Insert Translation
-	translationParams := repository.InsertTranslationParams{
+	// Step 3: Insert Translation if not already present
+	_, getErr := q.GetTranslation(ctx, repository.GetTranslationParams{
 		SourashtraWordID: sourashtraID,
 		OtherWordID:      englishID,
-		Context:          pgtype.Text{String: translationContext, Valid: translationContext != ""},
-	}
-	err = qtx.InsertTranslation(ctx, translationParams)
-	if err != nil {
-		return err
-	}
-
-	// Step 5: Insert Word Category if categoryID is valid (> 0)
-	if categoryID > 0 {
-		wordCategoryParams := repository.InsertWordCategoryParams{
-			WordID:     sourashtraID,
-			CategoryID: int32(categoryID),
-		}
-		err = qtx.InsertWordCategory(ctx, wordCategoryParams)
+	})
+	if getErr != nil {
+		err = q.InsertTranslation(ctx, repository.InsertTranslationParams{
+			SourashtraWordID: sourashtraID,
+			OtherWordID:      englishID,
+			Context:          pgtype.Text{String: wordRecord.TranslationContext, Valid: wordRecord.TranslationContext != ""},
+		})
 		if err != nil {
 			return err
 		}
 	}
-	return tx.Commit(ctx)
+
+	// Step 4: Insert Word Category if categoryID is valid (> 0) and not already present
+	if categoryID > 0 {
+		_, getErr := q.GetWordCategory(ctx, repository.GetWordCategoryParams{
+			WordID:     sourashtraID,
+			CategoryID: int32(categoryID),
+		})
+		if getErr != nil {
+			err = q.InsertWordCategory(ctx, repository.InsertWordCategoryParams{
+				WordID:     sourashtraID,
+				CategoryID: int32(categoryID),
+			})
+			if err != nil {
+				return err
+			}
+		}
+	}
+	return nil
 }
 
 // initWordCategoryMap reads the categories from the table and creates a mapping from category string to category id.
@@ -92,37 +101,36 @@ func initWordCategoryMap(ctx context.Context, q *repository.Queries) (map[string
 	return categoryMap, nil
 }
 
-// uploadSimpleWordPair takes a simple csv file with no context
-func uploadCSVFile(ctx context.Context, pool *pgxpool.Pool, q *repository.Queries, f CSVFile) error {
-	records := csv.ReadCsv(f.filepath)
-	headerTitle := fmt.Sprintf("Uploading csv file <%s> with PoS <%s> and category <%d>", f.filepath, f.partOfSpeech, f.categoryID)
+func uploadCSVFile(ctx context.Context, q *repository.Queries, f CSVFile) error {
+	wordRecords, csvErr := csv.ReadCsvWordFile(f.FilePath, f.DefaultPartOfSpeech)
+	if csvErr != nil {
+		return csvErr
+	}
+
+	headerTitle := fmt.Sprintf(
+		"Uploading csv file <%s> with PoS <%s> and category <%d>",
+		f.FilePath, f.DefaultPartOfSpeech, f.CategoryID,
+	)
 	headerSeparator := "\n" + strings.Repeat("-", len(headerTitle)) + "\n"
 	header := headerSeparator + headerTitle + headerSeparator
 	fmt.Print(header)
 
-	for i, record := range records {
-		if i == 0 {
-			continue // Skip header
+	for _, wordRecord := range wordRecords {
+		fmt.Printf(
+			"Uploading pair: %s (%s), %s %s\n",
+			wordRecord.SourashtraWord, wordRecord.PartOfSpeech,
+			wordRecord.EnglishWord, wordRecord.TranslationContext,
+		)
+		err := uploadWordPair(ctx, q, wordRecord, f.CategoryID)
+		if err != nil {
+			log.Printf("Failed to upload word pair (%s, %s): %v", wordRecord.SourashtraWord, wordRecord.EnglishWord, err)
 		}
-		sourashtra := record[0]
-		english := record[1]
-		translationContext := ""
-
-		if len(record) > 2 {
-			translationContext = record[2]
-		}
-		fmt.Printf("Uploading pair: %s, %s %s\n", sourashtra, english, translationContext)
-
-		// err := uploadWordPair(ctx, pool, q, sourashtra, english, f.partOfSpeech, translationContext, f.categoryID)
-		// if err != nil {
-		// 	log.Printf("Failed to upload word pair (%s, %s): %v", sourashtra, english, err)
-		// }
 	}
 	return nil
 }
 
 // uploadCSVFiles uploads all the csv files
-func uploadCSVFiles(ctx context.Context, pool *pgxpool.Pool, q *repository.Queries, categoryMap map[string]int) error {
+func uploadCSVFiles(ctx context.Context, q *repository.Queries, categoryMap map[string]int) error {
 	wordsDir := os.Getenv("WORDS_DIR")
 
 	// Setup CSV Files
@@ -131,8 +139,9 @@ func uploadCSVFiles(ctx context.Context, pool *pgxpool.Pool, q *repository.Queri
 		{path.Join(wordsDir, "Adverbs.csv"), "adverb", categoryMap["adverbs"]},
 		{path.Join(wordsDir, "Animals.csv"), "noun", categoryMap["animals"]},
 		{path.Join(wordsDir, "Body.csv"), "noun", categoryMap["body"]},
+		{path.Join(wordsDir, "Business.csv"), "noun", categoryMap["business"]},
 		{path.Join(wordsDir, "Clothing.csv"), "noun", categoryMap["clothing"]},
-		{path.Join(wordsDir, "Cognition.csv"), "noun", categoryMap["cognition"]},
+		{path.Join(wordsDir, "Knowledge.csv"), "noun", categoryMap["knowledge"]},
 		{path.Join(wordsDir, "Colors.csv"), "adjective", categoryMap["colors"]},
 		{path.Join(wordsDir, "Conjunctions.csv"), "conjunction", categoryMap["conjunctions"]},
 		{path.Join(wordsDir, "Family.csv"), "noun", categoryMap["family"]},
@@ -154,9 +163,9 @@ func uploadCSVFiles(ctx context.Context, pool *pgxpool.Pool, q *repository.Queri
 	}
 
 	for _, csvFile := range csvFiles {
-		csvErr := uploadCSVFile(ctx, pool, q, csvFile)
+		csvErr := uploadCSVFile(ctx, q, csvFile)
 		if csvErr != nil {
-			log.Printf("Failed to upload csv file(%s): %v", csvFile.filepath, csvErr)
+			log.Printf("Failed to upload csv file(%s): %v", csvFile.FilePath, csvErr)
 		}
 	}
 
@@ -180,5 +189,5 @@ func main() {
 		fmt.Printf("Category: %s, ID: %d\n", category, id)
 	}
 
-	uploadCSVFiles(ctx, pool, q, categoryMap)
+	uploadCSVFiles(ctx, q, categoryMap)
 }
