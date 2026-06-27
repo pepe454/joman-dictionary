@@ -1,108 +1,191 @@
-sourashtra_word,english_word
-avattE,come
-jaattE,go
-chalattE,walk
-chalattE,happen
-dhamattE,run
-hinGgatte,climb
-hibbattE,stand
-injattE,sleep
-huDattE,wake
-bisattE,sit
-dowdattE,drive
-hibbattE,stand
-khaattE,eat
-miNgattE,swallow
-chAvattE,bite
-kOvlattE,cough
-chemchattE,chew
-chATattE,lick
-pEttE,drink
-jhUrattE,slurp
-bOvattE,call
-sangattE,say
-pusattE,ask
-menattE,speak
-gavattE,sing
-khatattE,shout
-lavattE,feel
-luchattE,spill
-jirkattE,slip
-bijjattE,soak
-sijjattE,boil
-handattE,cook
-bhunjattE,fry
-bhunjattE,roast
-machattE,change
-dhombalattE,yawn
-dhunkattE,jump
-likkattE,write
-chovdattE,read
-varunjattE,draw
-bhandattE,tie
-kowlattE,mix
-kowjattE,itch
-khalattE,play
-chivattE,peel
-siivattE,sow
-aasattE,smile
-dekkattE,appear
-dekkattE,meet
-dekkadattE,show
-devusattE,stick
-soDattE,release
-kovjattE,itch
-hedattE,remove
-khallattE,take
-anattE,bring
-khalli avattE,bring
-uuskattE,bark
-uchattE,pull
-dhobattE,push
-kerattE,do
-podattE,fall
-saattE,see
-vekkattE,search
-gaunchilattE,care
-moLchattE,fold
-nigalattE,leave
-jedattE,leave
-galdattE,scold
-dherattE,catch
-dherattE,touch
-dhellattE,hold
-thovattE,place
-thukkattE,lift
-tailattE,keep
-tailattE,wear
-hedi thovattE,undress
-ghaLLattE,wear jewelry
-phirlattE,wear sari
-phirlattE,turn
-jhavattE,close
-rODattE,cry
-khaDattE,buy
-vikkattE,sell
-hanattE,hit
-chEratte,join
-musaDatte,finish
-jiivattE,live
-sikkattE,learn
-sikkadattE,teach
-buddhi sangattE,teach
-aikkattE,hear
-dhettE,give
-gunjattE,launder
-manjattE,brush
-dhuvattE,bathe
-jemchattE,win
-abattE,get
-lowlattE,apply
-pILattE,squeeze
-ladattE,kick
-havdulaattE,think
-havdulaattE,remember
-prunjaattE,understand
-mellattE,think
-unno kerattE,reduce
-magattE,demand
+sourashtra_word,english_word,optional_context
+avattE,come,commonly joined with other verbs as 'avi'
+jaattE,go,jaa means go away
+chalattE,walk,
+chalattE,happen,
+dhamattE,run,
+hinGgatte,climb,
+hutturattE,descend,climb down
+andattE,reach,
+hibbattE,stand,
+hibbattE,stop,
+injattE,sleep,
+injaDattE,put to sleep,
+huDattE,wake,
+huDattE,fly,
+huDattE,open,
+bisattE,sit,
+dowdattE,drive,
+khaattE,eat,
+khavaDattE,feed,
+mingattE,swallow,
+chavattE,bite,
+kOvlattE,cough,
+chemchattE,chew,
+chATattE,lick,
+pEttE,drink,
+jhUrattE,slurp,
+bOvattE,call,
+sangattE,say,commonly used as say it or tell me
+sangattE,tell,
+pusattE,ask,
+menattE,speak,
+vatto kerattE,
+gavattE,sing,
+katattE,shout,
+retcha kerattE,make noise,
+lavattE,feel,
+luchattE,spill,
+luchattE,pour,
+gaLattE,pour,
+jirkattE,slip,
+bijjattE,soak,
+sijjattE,boil,
+tappadattE,boil,
+teLattE,steam,
+oTchattE,filter,
+phangudDattE,filter,
+handattE,cook,
+bhunjJattE,fry,
+bhunjJattE,roast,
+machattE,change,
+machattE,replace,
+dhombalattE,yawn,dhomblai dhettE means she is yawning
+dhunkattE,jump,
+likkattE,write,
+chovdattE,read,
+chovdattE,study,
+varunjattE,draw,
+bhandattE,tie,
+bhandattE,build,
+kowlattE,mix,
+khowjattE,itch,
+khalattE,play,
+vavjattE,play,instrument
+chivattE,peel,
+solattE,peel,
+siivattE,sow,
+aasattE,smile,
+dekkattE,appear,
+dekkattE,meet,
+dekkadattE,show,
+devusattE,stick,
+devusattE,attach,
+soDattE,release,
+soDattE,leave,
+soDattE,let,
+soDattE,abandon,
+heDattE,remove,
+heDattE,pick,
+khallattE,take,
+anattE,bring,
+khalli avattE,bring,means literally take and come
+uuskattE,bark,
+uchattE,pull,
+dhobattE,push,
+kerattE,do,commonly used with other verbs like 'retcha kerattE' and 'choD kerattE'
+podattE,fall,
+tagattE,drop
+saattE,see,
+saattE,sense,
+vekkattE,search,
+gavunchilattE,care,
+siilattE,care,
+moLchattE,fold,
+nigalattE,leave,
+jedattE,leave,
+galdattE,scold,
+dherattE,catch,
+dherattE,touch,
+dhellattE,hold,
+thovattE,place,
+thukkattE,lift,
+tokkattE,stomp,
+tailattE,keep,
+tailattE,wear,
+hedi thovattE,undress,
+ghaLLattE,wear jewelry,
+phirattE,wear sari,
+phirattE,turn,
+jhavattE,close,
+rODattE,cry,
+khaDattE,buy,
+vikkattE,sell,
+hanattE,hit,
+laidattE,befall,used in the expression 'ghAm laidiyo' to mean become injured
+chEratte,join,
+chechattE,join,
+musaDatte,finish,
+musattE,can,
+jiivattE,live,
+sikkattE,learn,
+sikkadattE,teach,
+buddhi sangattE,teach,
+aikkattE,hear,
+dhettE,give,
+gunjattE,launder,
+manjattE,brush,
+dhuvattE,bathe,
+jemchattE,win,
+abattE,get,
+abattE,receive,
+lowlattE,apply,
+lowlattE,smear,
+pILattE,squeeze,
+kusurattE,squeeze,
+teTTattE,knock,
+haath teTTattE,clap,
+ladattE,kick,
+havdulaattE,think,
+havdulaattE,remember,
+prunjaattE,understand,commonly used in the form prunjaaras to understand
+mellattE,think,
+unno kerattE,reduce,
+magattE,demand,
+oppuLattE,agree,
+choD kerattE,arrange,
+harmbam kerattE,begin,
+harmbam kerattE,start,
+tevDattE,caress,
+echaDattE,cheat,
+orpulattE,comb,
+kaDattE,cut,
+naachattE,dance,
+rosattE,hate,mogo thogO rosaras means 'I hate you'
+mOrattE,die,
+mOraDattE,kill,
+buDattE,dip,
+posattE,mop,
+jedju dhobattE,sweep,
+hungGi sattE,smell,
+miskattE,blink,
+vilunchattE,shake,
+hadurattE,spread,
+gesattE,rub,
+dhaDDattE,send,mi WhatsAppmu dhaDDayyo means 'I sent it over whatsapp'
+tesattE,smash,
+ghaDattE,smash
+lubbattE,grind,
+nivaDattE,cool down,
+joDunchattE,earn,
+dhulattE,roll,
+moDattE,break,
+phoDattE,break,
+sigurattE,sneeze,
+degaR dhettE,burp,
+kaNattE,pestle,
+ombulattE,rest,
+amkattE,press,
+moLattE,scrub,
+kowrattE,dig,
+hindaLattE,cradle,
+jelunchattE,sieve,
+junnattE,farm,
+hoDattE,grow,
+vinattE,weave,
+mosattE,rub,
+kaam kerattE,work,
+visurattE,throw,
+jaaLattE,burn,
+ujattE,born,to be born as in ujjeyyo
+paayn podattE,pray,
