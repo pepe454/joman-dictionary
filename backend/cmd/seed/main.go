@@ -115,7 +115,7 @@ func uploadCSVFile(ctx context.Context, q *repository.Queries, f CSVFile) error 
 	header := headerSeparator + headerTitle + headerSeparator
 	fmt.Print(header)
 
-	for _, wordRecord := range wordRecords {
+	for _, wordRecord := range wordRecords[1:] {
 		fmt.Printf(
 			"Uploading pair: %s (%s), %s %s\n",
 			wordRecord.SourashtraWord, wordRecord.PartOfSpeech,
