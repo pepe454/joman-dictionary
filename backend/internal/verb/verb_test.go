@@ -52,4 +52,11 @@ func TestConjugateImperative(t *testing.T) {
 	if formal != formalWant {
 		t.Errorf("formal commmand for %s doesn't match %s, got: %s", testVerb, formalWant, formal)
 	}
+
+	// informal not ending in v
+	hingi, _ := ConjugateVerb("hingattE", paramsInformal)
+	if hingi != "hingi" {
+		t.Errorf("Informal command for hingattE should be hingi, got: %s", hingi)
+	}
+
 }

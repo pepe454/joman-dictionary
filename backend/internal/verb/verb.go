@@ -50,12 +50,15 @@ func ConjugateImperative(root string, params ConjugationParams) string {
 			return root + "o"
 		}
 		return root + "uvo" // aas -> aasuvo
+	} else if strings.HasSuffix(root, "v") { // av -> av
+		return root
 	}
-	return root
+	return root + "i" // hing -> hingi
 }
 
 // Gerund is very simple - return root + "ile sE"
 func ConjugateGerund(root string, params ConjugationParams) string {
+	root = strings.TrimRight(root, "a") // for roots ending in a like "ja" -> "jile sE"
 	return root + "ile sE"
 }
 
