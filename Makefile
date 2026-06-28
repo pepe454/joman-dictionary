@@ -11,6 +11,9 @@ init-db:
 delete-db:
 	docker compose down postgres && docker volume prune --all
 
+seed-db:
+	cd backend && go run cmd/seed/main.go
+
 test:
 	cd backend && go test ./...
 

@@ -63,7 +63,7 @@
 - [ ] Add derivatives , derivations of a word so that word in context can still reference the original word. 
     - [ ] Plurals 
     - [ ] Nouns with suffix (for example, in)
-        - um,indicates location for example park-um sethe
+        - um,indicates location for example park-um sEte
         - n,plural noun modifier (pillO -> pillan)
         - ni,negative modifier on a verb 
         - k,indicates a noun is a receiver of an action

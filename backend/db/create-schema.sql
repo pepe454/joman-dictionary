@@ -36,7 +36,8 @@ CREATE TABLE IF NOT EXISTS dictionary.word
     word_text_alt text NULL,
     audio_file_path text,
     CONSTRAINT pk_word PRIMARY KEY (word_id),
-    CONSTRAINT word_text_distinct UNIQUE (word_text, language)
+    -- only one word with the same text, part of speech, and language can exist in the dictionary
+    CONSTRAINT word_text_distinct UNIQUE (word_text, part_of_speech, language)
 );
 
 

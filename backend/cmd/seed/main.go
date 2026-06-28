@@ -159,6 +159,7 @@ func uploadCSVFiles(ctx context.Context, q *repository.Queries, categoryMap map[
 		{path.Join(wordsDir, "Taste.csv"), "adjective", categoryMap["taste"]},
 		{path.Join(wordsDir, "Time.csv"), "noun", categoryMap["time"]},
 		{path.Join(wordsDir, "TimeAdverbs.csv"), "adverb", categoryMap["time"]},
+		{path.Join(wordsDir, "Travel.csv"), "noun", categoryMap["travel"]},
 		{path.Join(wordsDir, "Verbs.csv"), "verb", categoryMap["verbs"]},
 	}
 

@@ -58,6 +58,7 @@ INSERT INTO dictionary.category (category) VALUES
     ('people'),
     ('places'),
     ('taste'),
+    ('travel'),
     ('time');
 
 
