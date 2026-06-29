@@ -116,10 +116,15 @@ func uploadCSVFile(ctx context.Context, q *repository.Queries, f CSVFile) error 
 	fmt.Print(header)
 
 	for _, wordRecord := range wordRecords[1:] {
+		translationContextString := "-> " + wordRecord.TranslationContext
+		if wordRecord.TranslationContext == "" {
+			translationContextString = ""
+		}
+
 		fmt.Printf(
 			"Uploading pair: %s (%s), %s %s\n",
 			wordRecord.SourashtraWord, wordRecord.PartOfSpeech,
-			wordRecord.EnglishWord, wordRecord.TranslationContext,
+			wordRecord.EnglishWord, translationContextString,
 		)
 		err := uploadWordPair(ctx, q, wordRecord, f.CategoryID)
 		if err != nil {
@@ -141,13 +146,13 @@ func uploadCSVFiles(ctx context.Context, q *repository.Queries, categoryMap map[
 		{path.Join(wordsDir, "Body.csv"), "noun", categoryMap["body"]},
 		{path.Join(wordsDir, "Business.csv"), "noun", categoryMap["business"]},
 		{path.Join(wordsDir, "Clothing.csv"), "noun", categoryMap["clothing"]},
-		{path.Join(wordsDir, "Knowledge.csv"), "noun", categoryMap["knowledge"]},
 		{path.Join(wordsDir, "Colors.csv"), "adjective", categoryMap["colors"]},
 		{path.Join(wordsDir, "Conjunctions.csv"), "conjunction", categoryMap["conjunctions"]},
 		{path.Join(wordsDir, "Family.csv"), "noun", categoryMap["family"]},
 		{path.Join(wordsDir, "Feelings.csv"), "noun", categoryMap["feelings"]},
 		{path.Join(wordsDir, "Food.csv"), "noun", categoryMap["food"]},
 		{path.Join(wordsDir, "House.csv"), "noun", categoryMap["house"]},
+		{path.Join(wordsDir, "Knowledge.csv"), "noun", categoryMap["knowledge"]},
 		{path.Join(wordsDir, "Nature.csv"), "noun", categoryMap["nature"]},
 		{path.Join(wordsDir, "Numbers.csv"), "numeral", categoryMap["numbers"]},
 		{path.Join(wordsDir, "People.csv"), "noun", categoryMap["people"]},
@@ -156,6 +161,7 @@ func uploadCSVFiles(ctx context.Context, q *repository.Queries, categoryMap map[
 		{path.Join(wordsDir, "Prepositions.csv"), "preposition", categoryMap["prepositions"]},
 		{path.Join(wordsDir, "Pronouns.csv"), "pronoun", categoryMap["pronouns"]},
 		{path.Join(wordsDir, "Questions.csv"), "interrogative", categoryMap["questions"]},
+		{path.Join(wordsDir, "Religion.csv"), "noun", categoryMap["religion"]},
 		{path.Join(wordsDir, "Taste.csv"), "adjective", categoryMap["taste"]},
 		{path.Join(wordsDir, "Time.csv"), "noun", categoryMap["time"]},
 		{path.Join(wordsDir, "TimeAdverbs.csv"), "adverb", categoryMap["time"]},
