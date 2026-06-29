@@ -1,8 +1,10 @@
-sourashtra_word,english_word,optional context,part_of_speech
-uchlaav,income,,noun
-riin,debt,,noun
-tidduvaLi,settle debt,kaay lhekko tidduvaLi kertiyo yaa?=Have you settled the account?,noun
-keLtar,interest,,noun
-vikkattE,sell,,verb
-khaDattE,buy,,verb
-joDunchattE,earn,,verb
+sourashtra_word,english_word,part_of_speech
+uchlaav,income,noun
+riin,debt,noun
+keLtar,interest,noun
+vikkattE,sell,verb
+khaDattE,buy,verb
+joDunchattE,earn,verb
+duT,income,noun
+kaam,work,noun
+aphis,office,noun

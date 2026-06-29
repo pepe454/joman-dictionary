@@ -10,11 +10,14 @@ radhi,night
 ghEDi,moment
 ghentO,time
 dinu,day
-vorsu,year
+orsu,year
 vaar,week
-gEyvorsu,last year
-gEyvaar,last week
 vaal,time
+gEyorsu,last year
+gEyvaar,last week
+gEyvaal,last time
+holloorsu,next year
+hollavaal,next time
 mhaDho,month
 somaar,monday
 mongalaar,tuesday
@@ -27,4 +30,6 @@ kalaam,season
 harmbam,beginning
 harmbam,start
 villuku,all-day
-phaar,three hours
+poram,day after tomorrow
+theram,two days from now
+uraL,later

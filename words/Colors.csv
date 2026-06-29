@@ -1,9 +1,14 @@
-sourashtra_word,english_word
-kaaLo,black
-hujaaL,white
-haLduno,yellow
-hira,orange
-lhovvO,red
-niLa,blue
-jembla,violet
-rengu,color
+sourashtra_word,english_word,optional_context
+kaaLo,black,
+hujaaL,white,
+haLduno,yellow,
+hira,orange,
+lhovvO,red,
+niLa,blue,
+jembla,violet,
+poLso,green,
+rengu,color,
+hiran,gold,
+goro,white,white skin
+chamal,brown,brown skin
+raak,gray,gray ash color

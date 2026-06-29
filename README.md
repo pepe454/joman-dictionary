@@ -60,3 +60,5 @@ TODO: Add a page for this compilation.
 - [OS Subramanian Blog](https://subramanian-obula.blogspot.com/)
 - [Sourashtra Article](https://www.endangeredalphabets.net/alphabets/sourashtra/)
 - [Sourashtra Blogspot](https://sourashtralibrary.blogspot.com/)
+- [Scribd Repository](https://www.scribd.com/user/281206342/Kondaa-S-SenthilKumar/uploads)
+- [Friends Story](https://www.scribd.com/document/339056597/Meeting-of-Friend-Sourashtram)

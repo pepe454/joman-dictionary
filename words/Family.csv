@@ -12,6 +12,10 @@ mhoTTabO,uncle,father's older brother
 mhoTTambO,aunt,father's older brother's wife
 nhunnabO,uncle,father's younger brother
 nhunnambO,aunt,father's older brother's wife
+mhoTTabO bedO,cousin,dad's elder brother's son
+mhoTTabO beDi,cousin,dad's elder brother's daughter
+nhunnabO bedO,cousin,dad's younger brother's son
+nhunnabO beDi,cousin,dad's younger brother's daughter
 bEy,aunt,father's sister
 phOIn,aunt,father's sister 
 bhavO,uncle,father's sister's husband
@@ -21,17 +25,21 @@ mamO,uncle,mother's brother
 mamO,father-in-law,colloquial term for father-in-law
 mami,aunt,mother's brother's wife
 mami,mother-in-law,colloquial term for mother-in-law
-mama bedO,cousin,mamo and mami's son
-mama bedI,cousin,mamo and mami's daughter
 mausi,aunt,mother's sister
 mauso,uncle,mother's sister's husband
+mama bedO,cousin,mamo and mami's son
+mama beDi,cousin,mamo and mami's daughter
+mausi bedO,cousin,mom's sister's son
+mausi beDi,cousin,mom's sister's daughter
 dallO,husband,
+saravaaLi,husband,
 bEyl,wife,
+ghEraLi,wife,
 pillO,child,
 nhuru,baby,
 bedO,son,
 beDko,boy,
-bedI,daughter,
+beDi,daughter,
 beDki,girl,
 nattE,grandson,
 nadini,granddaughter,
@@ -39,12 +47,15 @@ sasu,mother-in-law,
 sosurO,father-in-law,
 vesintin,in-law,parent in law (generic)
 salO,brother-in-law,wife's older brother
+sali,sister-in-law,wife's sister
 jET,brother-in-law,husband's older brother
 jheDani,sister-in-law,husband's elder brother's wife
+neyndu,sister-in-law,husdband's younger sister
 bhavi,sister-in-law,elder brother's wife
 bhavO,brother-in-law,sister's husband
 devar,brother-in-law,husband's younger brother
 devraNi,sister-in-law,husband's younger brother's wife
+sorguT,co-brother,wife's sister's husband
 jomAi,son-in-law,
 bhoNDi,dauther-in-law,
 kudambam,family,
@@ -56,3 +67,5 @@ ghEr,lineage,indicates family group
 anghEr,mother's side,mom's side of the family
 amman ghEr,father's side,dad's side of the family
 sambandam,relationship,
+jaat,caste,
+jaat,race,
