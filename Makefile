@@ -1,18 +1,29 @@
 include .env
 export
 
-# Download psql client here - https://www.postgresql.org/download/linux/ubuntu/
+
+# Database / Postgres stuff
+
 psql-connect:
 	psql -h localhost -p 5432 -U postgresadmin -d joman
 
 init-db:
-	docker compose up -d postgres && docker compose logs -f postgres
+	docker compose up -d postgres
 
 delete-db:
 	docker compose down postgres && docker volume prune --all
 
 seed-db:
 	cd backend && go run cmd/seed/main.go
+
+reset-db:
+	$(MAKE) delete-db && $(MAKE) init-db && $(MAKE) seed-db
+
+copy-from-pgadmin:
+	docker cp joman-pgadmin-1:/var/lib/pgadmin/storage/$(user)/* ./backend/db/
+
+
+# Go stuff
 
 test:
 	cd backend && go test ./...
@@ -27,7 +38,6 @@ install-go:
 
 source-env:
 	set -o allexport && source .env && set +o allexport
-
 
 sqlc-generate:
 	cd backend && sqlc generate

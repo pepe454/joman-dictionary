@@ -15,6 +15,11 @@ type WordRecord struct {
 	PartOfSpeech       string
 }
 
+type SentenceRecord struct {
+	SourashtraSentence string
+	EnglishSentence    string
+}
+
 // ReadCSV uses the encoding/csv package to read csv file and return a 2D array of strings
 func ReadCsv(filePath string) [][]string {
 	f, err := os.Open(filePath)
