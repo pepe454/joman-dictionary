@@ -16,6 +16,9 @@ delete-db:
 seed-db:
 	cd backend && go run cmd/seed/main.go
 
+upload-sentences:
+	cd backend && go run cmd/sentences/main.go
+
 reset-db:
 	$(MAKE) delete-db && $(MAKE) init-db && $(MAKE) seed-db
 

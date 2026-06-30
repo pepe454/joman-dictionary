@@ -16,6 +16,14 @@ from dictionary.category
 order by category;
 
 
+-- name: ListWordsForLanguage :many
+select w.word_id, 
+       w.word_text
+from dictionary.word w
+where w.language = $1
+order by w.word_text;
+
+
 -- name: SentencesForWord :many
 select w.word_id,
        w.word_text,

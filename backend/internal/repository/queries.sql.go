@@ -194,6 +194,39 @@ func (q *Queries) ListCategories(ctx context.Context) ([]DictionaryCategory, err
 	return items, nil
 }
 
+const listWordsForLanguage = `-- name: ListWordsForLanguage :many
+select w.word_id, 
+       w.word_text
+from dictionary.word w
+where w.language = $1
+order by w.word_text
+`
+
+type ListWordsForLanguageRow struct {
+	WordID   int32
+	WordText string
+}
+
+func (q *Queries) ListWordsForLanguage(ctx context.Context, language string) ([]ListWordsForLanguageRow, error) {
+	rows, err := q.db.Query(ctx, listWordsForLanguage, language)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListWordsForLanguageRow
+	for rows.Next() {
+		var i ListWordsForLanguageRow
+		if err := rows.Scan(&i.WordID, &i.WordText); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const sentencesForWord = `-- name: SentencesForWord :many
 select w.word_id,
        w.word_text,

@@ -17,6 +17,7 @@ type Querier interface {
 	InsertWord(ctx context.Context, arg InsertWordParams) (int32, error)
 	InsertWordCategory(ctx context.Context, arg InsertWordCategoryParams) error
 	ListCategories(ctx context.Context) ([]DictionaryCategory, error)
+	ListWordsForLanguage(ctx context.Context, language string) ([]ListWordsForLanguageRow, error)
 	SentencesForWord(ctx context.Context, wordID int32) ([]SentencesForWordRow, error)
 	SourashtraTranslation(ctx context.Context, wordID int32) ([]SourashtraTranslationRow, error)
 	TranslationToSourashtra(ctx context.Context, wordID int32) ([]TranslationToSourashtraRow, error)

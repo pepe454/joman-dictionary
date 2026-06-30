@@ -101,7 +101,7 @@ func initWordCategoryMap(ctx context.Context, q *repository.Queries) (map[string
 	return categoryMap, nil
 }
 
-func uploadCSVFile(ctx context.Context, q *repository.Queries, f CSVFile) error {
+func uploadCsvWordFile(ctx context.Context, q *repository.Queries, f CSVFile) error {
 	wordRecords, csvErr := csv.ReadCsvWordFile(f.FilePath, f.DefaultPartOfSpeech)
 	if csvErr != nil {
 		return csvErr
@@ -134,8 +134,8 @@ func uploadCSVFile(ctx context.Context, q *repository.Queries, f CSVFile) error 
 	return nil
 }
 
-// uploadCSVFiles uploads all the csv files
-func uploadCSVFiles(ctx context.Context, q *repository.Queries, categoryMap map[string]int) error {
+// uploadCsvWordFiles uploads all the csv files
+func uploadCsvWordFiles(ctx context.Context, q *repository.Queries, categoryMap map[string]int) error {
 	wordsDir := os.Getenv("WORDS_DIR")
 
 	// Setup CSV Files
@@ -170,7 +170,7 @@ func uploadCSVFiles(ctx context.Context, q *repository.Queries, categoryMap map[
 	}
 
 	for _, csvFile := range csvFiles {
-		csvErr := uploadCSVFile(ctx, q, csvFile)
+		csvErr := uploadCsvWordFile(ctx, q, csvFile)
 		if csvErr != nil {
 			log.Printf("Failed to upload csv file(%s): %v", csvFile.FilePath, csvErr)
 		}
@@ -196,5 +196,5 @@ func main() {
 		fmt.Printf("Category: %s, ID: %d\n", category, id)
 	}
 
-	uploadCSVFiles(ctx, q, categoryMap)
+	uploadCsvWordFiles(ctx, q, categoryMap)
 }

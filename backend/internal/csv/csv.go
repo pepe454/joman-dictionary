@@ -80,3 +80,33 @@ func ReadCsvWordFile(filePath string, defaultPartOfSpeech string) ([]WordRecord,
 
 	return wordRecords, csvErr
 }
+
+func ReadCsvSentenceFile(filePath string) ([]SentenceRecord, error) {
+	var csvErr error
+	records := ReadCsv(filePath)
+	sentenceRecords := make([]SentenceRecord, 0, len(records)-1) // exclude header
+
+	// Setup header mapping to get the index of each column
+	header := records[0]
+	headerMapping := make(map[string]int)
+	for i, h := range header {
+		headerMapping[h] = i
+	}
+
+	// Confirm sourashtra and english sentences available
+	sourashtraSentenceIndex, sourashtraOk := headerMapping["sourashtra_sentence"]
+	englishSentenceIndex, englishOk := headerMapping["english_sentence"]
+	if !sourashtraOk || !englishOk {
+		csvErr = fmt.Errorf("Could not find index for sourashtra or english sentence in csv file.")
+		return sentenceRecords, csvErr
+	}
+
+	// populate the sentenceRecords slice with sourashtra->english translations
+	for _, record := range records[1:] {
+		sourashtraSentence := record[sourashtraSentenceIndex]
+		englishSentence := record[englishSentenceIndex]
+		sentenceRecord := SentenceRecord{sourashtraSentence, englishSentence}
+		sentenceRecords = append(sentenceRecords, sentenceRecord)
+	}
+	return sentenceRecords, csvErr
+}
