@@ -62,6 +62,7 @@ func uploadSentence(
 func uploadCsvSentenceFile(ctx context.Context, q *repository.Queries, filePath string, sourashtraWordMap, englishWordMap map[string]int32) error {
 	sentenceRecords, csvErr := csv.ReadCsvSentenceFile(filePath)
 	if csvErr != nil {
+		fmt.Printf("Error reading sentence csv file: %v\n", csvErr)
 		return csvErr
 	}
 	fmt.Printf("Uploading csv file <%s>...\n", filePath)
@@ -80,7 +81,8 @@ func uploadCsvSentenceFiles(
 	sourashtraWordMap, englishWordMap map[string]int32) error {
 	sentencesDir := os.Getenv("SENTENCES_DIR")
 	csvFiles := []string{
-		path.Join(sentencesDir, "Body-Sentences.csv"),
+		// path.Join(sentencesDir, "Body-Sentences.csv"),
+		path.Join(sentencesDir, "Greeting-Phrases.csv"),
 	}
 
 	for _, filePath := range csvFiles {
