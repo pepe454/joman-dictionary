@@ -24,7 +24,8 @@ const (
 func identifyCorrectWord(ctx context.Context, q *repository.Queries, word string, language Language) (correctWord string, wordID int32) {
 	correctWord, wordID = "", -1
 	searchResults, _ := q.WordSearch(ctx, repository.WordSearchParams{Language: string(language), Similarity: word})
-	for i, result := range searchResults {
+	maxDisplay := min(5, len(searchResults))
+	for i, result := range searchResults[:maxDisplay] {
 		fmt.Printf("%d) Found similar word %s with ID %d\n", i+1, result.WordText, result.WordID)
 	}
 
