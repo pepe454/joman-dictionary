@@ -19,7 +19,7 @@ type TenseType string
 
 const (
 	ImperativeTense TenseType = "imperative"
-	GerundTense     TenseType = "gerun"
+	GerundTense     TenseType = "gerund"
 )
 
 type ConjugationParams struct {
@@ -29,6 +29,8 @@ type ConjugationParams struct {
 	Person  PersonType
 	Tense   TenseType
 }
+
+const Vowels = "aeiou"
 
 // GetRoot finds the root of an infinitive verb. If the verb is not infinitive it cannot be conjugated.
 func GetRoot(infinitive string) (string, error) {
@@ -43,23 +45,28 @@ func GetRoot(infinitive string) (string, error) {
 	return root, conjugationError
 }
 
-// ConjugateImperative is the simplest of all - just return the root and + "uvo" for respect.
+// ConjugateImperative tense is for commands and requests.
 func ConjugateImperative(root string, params ConjugationParams) string {
+	suffix := string(root[len(root)-1])
 	if params.Respect || params.Plural {
-		if strings.HasSuffix(root, "v") { // av -> avo
+		if suffix == "v" { // av -> avo
 			return root + "o"
+		} else if strings.ContainsAny(suffix, Vowels) { // ja -> javo
+			return root + "vo"
 		}
 		return root + "uvo" // aas -> aasuvo
-	} else if strings.HasSuffix(root, "v") { // av -> av
+	} else if suffix == "v" { // av -> av
+		return root
+	} else if strings.ContainsAny(suffix, Vowels) { // ja -> ja
 		return root
 	}
 	return root + "i" // hing -> hingi
 }
 
-// Gerund is very simple - return root + "ile sE"
+// Gerund is very simple - return root + "ile"
 func ConjugateGerund(root string, params ConjugationParams) string {
-	root = strings.TrimRight(root, "a") // for roots ending in a like "ja" -> "jile sE"
-	return root + "ile sE"
+	root = strings.TrimRight(root, "a") // for roots ending in a like "ja" -> "jile"
+	return root + "ile"
 }
 
 // ConjugateVerb takes an infinitive and params and conjugates the verb accordingly.
